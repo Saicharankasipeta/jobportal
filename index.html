@@ -1,0 +1,256 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10172f">
+  <title>CampusHire | Student Job Portal</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+
+  <header class="navbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">🎓</span>
+      Campus<span>Hire</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+      ☰
+    </button>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#jobs">Find Jobs</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#how-it-works">How It Works</a>
+    </nav>
+
+    <div class="nav-actions">
+      <span id="userStatus" class="user-status">Guest mode</span>
+      <button class="btn btn-outline" id="authButton">Login / Sign Up</button>
+      <button class="btn btn-dark hidden" id="logoutButton">Logout</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">✨ YOUR CAREER STARTS HERE</span>
+        <h1>Find the right opportunities <span>for your future.</span></h1>
+        <p class="hero-description">
+          Discover internships, part-time jobs and graduate opportunities.
+          Build your skills, gain experience, and begin your career journey
+          with CampusHire.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#jobs">Explore Jobs <span>→</span></a>
+          <a class="btn btn-light" href="#dashboard">Open Dashboard</a>
+        </div>
+
+        <div class="hero-stats">
+          <div><strong>Student-first</strong><span>Flexible opportunities</span></div>
+          <div><strong>Recruiter-ready</strong><span>Find emerging talent</span></div>
+          <div><strong>Track progress</strong><span>Manage applications</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-glow"></div>
+        <div class="floating-card floating-top">🚀 <span>New opportunities<br><b>Start your journey</b></span></div>
+        <div class="illustration-card">
+          <div class="illustration-icon">💻</div>
+          <div class="illustration-lines"><i></i><i></i><i></i></div>
+          <div class="illustration-badge">✓ Ready for your next step</div>
+        </div>
+        <div class="floating-card floating-bottom">🎯 <span>Career goals<br><b>One step at a time</b></span></div>
+      </div>
+    </section>
+
+    <section class="benefits">
+      <div class="benefit"><span>🎓</span><div><strong>Made for students</strong><p>Opportunities for every stage</p></div></div>
+      <div class="benefit"><span>🚀</span><div><strong>Learn by doing</strong><p>Gain real-world experience</p></div></div>
+      <div class="benefit"><span>💼</span><div><strong>Discover careers</strong><p>Find your next opportunity</p></div></div>
+      <div class="benefit"><span>✓</span><div><strong>Track applications</strong><p>Stay organised in one place</p></div></div>
+    </section>
+
+    <section class="section jobs-section" id="jobs">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">YOUR NEXT OPPORTUNITY</span>
+          <h2>Explore Open Positions</h2>
+          <p>Find jobs that match your interests and skills.</p>
+        </div>
+        <span class="job-count" id="jobCount">0 opportunities</span>
+      </div>
+
+      <div class="search-panel">
+        <label class="search-input">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search roles, companies...">
+        </label>
+
+        <select id="locationFilter" aria-label="Filter by location">
+          <option value="">All Locations</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Bengaluru">Bengaluru</option>
+          <option value="Remote">Remote</option>
+          <option value="Chennai">Chennai</option>
+        </select>
+
+        <select id="jobTypeFilter" aria-label="Filter by job type">
+          <option value="">All Job Types</option>
+          <option value="Internship">Internship</option>
+          <option value="Full-time">Full-time</option>
+          <option value="Part-time">Part-time</option>
+        </select>
+
+        <button class="btn btn-primary" id="searchButton">Search Jobs</button>
+      </div>
+
+      <div class="job-grid" id="jobsContainer">
+        <div class="loading-card">Loading opportunities...</div>
+      </div>
+    </section>
+
+    <section class="section dashboard-section" id="dashboard">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">YOUR WORKSPACE</span>
+          <h2>Dashboard</h2>
+          <p>Manage your applications, job listings and career activity.</p>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="dashboard-card">
+          <div class="dashboard-icon purple">📄</div>
+          <h3>My Applications</h3>
+          <p>Keep track of the jobs you've applied for.</p>
+          <div class="stat-number" id="applicationCount">0</div>
+          <span class="muted">Applications submitted</span>
+          <button class="text-button" id="viewApplications">View applications →</button>
+        </article>
+
+        <article class="dashboard-card">
+          <div class="dashboard-icon orange">🔎</div>
+          <h3>Discover Jobs</h3>
+          <p>Explore opportunities suited to your skills.</p>
+          <div class="stat-number">Explore</div>
+          <span class="muted">Your next career step</span>
+          <a class="text-button" href="#jobs">Browse opportunities →</a>
+        </article>
+
+        <article class="dashboard-card">
+          <div class="dashboard-icon green">👤</div>
+          <h3>Your Profile</h3>
+          <p>Sign in to personalise your experience.</p>
+          <div class="stat-number" id="profileName">Guest</div>
+          <span class="muted" id="profileRole">Student workspace</span>
+          <button class="text-button" id="profileButton">Login / Sign up →</button>
+        </article>
+      </div>
+
+      <div class="applications-panel hidden" id="applicationsPanel">
+        <div class="panel-heading">
+          <h3>Your applications</h3>
+          <button class="text-button" id="closeApplications">Close ✕</button>
+        </div>
+        <div id="applicationsList"></div>
+      </div>
+    </section>
+
+    <section class="section how-section" id="how-it-works">
+      <div class="center-heading">
+        <span class="eyebrow">SIMPLE. SMART. STUDENT-FRIENDLY.</span>
+        <h2>Your next opportunity in three steps</h2>
+        <p>Getting started with CampusHire is easy.</p>
+      </div>
+
+      <div class="steps-grid">
+        <article class="step-card">
+          <span class="step-number">01</span>
+          <div class="step-icon">👤</div>
+          <h3>Create your account</h3>
+          <p>Set up your student or recruiter profile.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">02</span>
+          <div class="step-icon">🔍</div>
+          <h3>Find your match</h3>
+          <p>Search roles by location and job type.</p>
+        </article>
+        <article class="step-card">
+          <span class="step-number">03</span>
+          <div class="step-icon">🚀</div>
+          <h3>Take the next step</h3>
+          <p>Apply for jobs and track your progress.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div>
+        <span class="eyebrow">YOUR FUTURE STARTS NOW</span>
+        <h2>Ready to find your next opportunity?</h2>
+        <p>Your next learning experience or career move could be one click away.</p>
+      </div>
+      <a class="btn btn-white" href="#jobs">Explore Opportunities →</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a href="#" class="brand">🎓 Campus<span>Hire</span></a>
+    <p>Connecting student talent with new possibilities.</p>
+    <span>© <span id="currentYear"></span> CampusHire. All rights reserved.</span>
+  </footer>
+
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" aria-label="Close dialog">✕</button>
+      <div class="modal-logo">🎓</div>
+      <span class="eyebrow">WELCOME TO CAMPUSHIRE</span>
+      <h2 id="modalTitle">Start your journey</h2>
+      <p class="modal-description">Sign in or create an account to get started.</p>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="loginTab" type="button">Login</button>
+        <button class="auth-tab" id="signupTab" type="button">Sign Up</button>
+      </div>
+
+      <form id="authForm">
+        <label class="form-field hidden" id="nameField">
+          Full name
+          <input id="authName" type="text" placeholder="Enter your name">
+        </label>
+
+        <label class="form-field">
+          Email address
+          <input id="authEmail" type="email" placeholder="you@example.com" required>
+        </label>
+
+        <label class="form-field">
+          Password
+          <input id="authPassword" type="password" placeholder="At least 8 characters" minlength="8" required>
+        </label>
+
+        <label class="form-field hidden" id="roleField">
+          Register as
+          <select id="authRole">
+            <option value="student">Student</option>
+            <option value="recruiter">Recruiter</option>
+          </select>
+        </label>
+
+        <button class="btn btn-primary full-width" id="authSubmit" type="submit">Login</button>
+        <p class="form-note">Demo mode: your account is stored in this browser only.</p>
+      </form>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</body>
+</html>
